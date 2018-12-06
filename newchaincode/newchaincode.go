@@ -88,7 +88,7 @@ func (s *Sample) createWatch(stub shim.ChaincodeStubInterface, args[]string) pb.
         Refuse: "0",
         Refuser:"",
         Owner: "",
-        Place:"c2",
+        Place:"c1",
         Version: 0,
     }
     jsons, err := json.Marshal(A)
@@ -173,7 +173,7 @@ func (s *Sample) changeData(stub shim.ChaincodeStubInterface, args []string) pb.
         } else {
              return shim.Error("Invalid charactor name. Expecting \"c1\" \"c2\" \"c3\"." )
         }
-   } else {
+   } else if place == "c3"{
         if function == "c1"{
              watch.FactoryConfirm = args[3]
              watch.ShopConfirm = ""
@@ -192,6 +192,9 @@ func (s *Sample) changeData(stub shim.ChaincodeStubInterface, args []string) pb.
         } else {
              return shim.Error("Invalid charactor name. Expecting \"c1\" \"c2\" \"c3\"." )
         }
+   } else {
+        watch.ConfirmFlag = "0"
+
    }
    watch.Refuse="0"
    watch.Version = watch.Version + 1
